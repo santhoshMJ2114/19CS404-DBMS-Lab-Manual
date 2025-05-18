@@ -77,20 +77,24 @@ Must contain unique values.
 Cannot be null.
 Should contain minimal fields.
 Syntax:
+
 ```sql
 CREATE TABLE Table_Name (
   column_name data_type(size) PRIMARY KEY
 );
 ```
+
 ### 5. FOREIGN KEY
 Used to reference the primary key of another table.
 Syntax:
+
 ```sql
 CREATE TABLE Table_Name (
   column_name data_type(size),
   FOREIGN KEY (column_name) REFERENCES other_table(column)
 );
 ```
+
 ### 6. DEFAULT
 Used to insert a default value into a column if no value is specified.
 
@@ -105,123 +109,159 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+![Screenshot083718](https://github.com/user-attachments/assets/9432f76c-51f4-40dc-9248-99f9d8210e58)
 
 ```sql
--- Paste your SQL code below for Question 1
+ALTER TABLE employee RENAME COLUMN id TO employee_id;```
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/5d9790ca-f653-4e6f-b627-7ef1d6bb5660)
 
 **Question 2**
 ---
--- Paste Question 2 here
+![Screensho 084035](https://github.com/user-attachments/assets/7ef3ba55-6bec-4686-93d6-b4ccb31dabed)
+
 
 ```sql
--- Paste your SQL code below for Question 2
+CREATE TABLE Events (
+    EventID INTEGER,
+    EventName TEXT,
+    EventDate DATE
+);
 ```
-
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/fb92eb74-8ffe-49bc-87d6-8a9fbe5892c7)
 
 **Question 3**
 ---
--- Paste Question 3 here
+![image](https://github.com/user-attachments/assets/7be0c906-7fe3-40e5-8bbf-a3f980097c22)
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Invoices(
+    InvoiceID INTEGER,
+    InvoiceDate DATE,
+    Amount REAL CHECK (Amount > 0),
+    DueDate DATE CHECK (DueDate > InvoiceDate),
+    OrderID INTEGER,
+    FOREIGN KEY (OrderID) REFERENCES Orders(orderID)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/ec5b7254-e809-48c8-bf10-3da81f7545fe)
 
 **Question 4**
 ---
--- Paste Question 4 here
 
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE products (
+    product_id INTEGER,
+    product_name TEXT NOT NULL,
+    list_price DECIMAL(10,2) NOT NULL ,
+    discount decimal (10,2) default 0 not null,
+    check(list_price>= 0 AND discount >=0 AND List_price >= discount)
+    
+);
 ```
 
 **Output:**
+![Screenshot 9 084610](https://github.com/user-attachments/assets/036c7966-99c4-4c95-8c2e-3d1d3ae20045)
 
-![Output4](output.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+![image](https://github.com/user-attachments/assets/9ccb0324-67db-4021-87f7-e16d9bd92c73)
 
 ```sql
--- Paste your SQL code below for Question 5
+INSERT INTO Employee (EmployeeID, Name, Department, Salary) SELECT EmployeeID, Name, Department, Salary FROM Former_employees;
 ```
 
 **Output:**
+![Screenshot084802](https://github.com/user-attachments/assets/419b9370-2eed-47f9-93c7-8aaa675b3089)
 
-![Output5](output.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+![Screenshot 084837](https://github.com/user-attachments/assets/615638e9-cd87-4521-8260-612584149454)
+
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Shipments(
+    ShipmentID INTEGER,
+    ShipmentDate DATE,
+    SupplierID Integer,
+    OrderID INTEGER,
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(orderID)
+);
 ```
 
 **Output:**
+![Screenshot 084919](https://github.com/user-attachments/assets/a4df0f4b-dc0a-4d05-87e0-eaf679619db2)
 
-![Output6](output.png)
 
 **Question 7**
 ---
--- Paste Question 7 here
+![Screenshot84947](https://github.com/user-attachments/assets/61e8326b-9106-42aa-a21f-7a0fe3120ff0)
 
 ```sql
--- Paste your SQL code below for Question 7
+ALTER TABLE Employees ADD COLUMN salary INTEGER CHECK(salary > 0);
 ```
 
 **Output:**
-
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/572c13c0-3388-42e0-b0eb-9f4e874fc970)
 
 **Question 8**
 ---
--- Paste Question 8 here
+![image](https://github.com/user-attachments/assets/e1706f24-ec56-4b18-aa71-5d50431f5ce5)
 
 ```sql
--- Paste your SQL code below for Question 8
+INSERT INTO Products(ProductID, Name, Category, Price, Stock) 
+VALUES  
+    (106, 'Fitness Tracker','Wearables', NULL, NULL), 
+    (107, 'Laptop', 'Electronic', 999.99, 50), 
+    (108, 'Wireless Earbud', 'Accessorie', NULL,100)
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/63d5ff0a-70fc-4c8b-8b0f-beead96a3d1c)
 
 **Question 9**
 ---
--- Paste Question 9 here
+![image](https://github.com/user-attachments/assets/20dffa8d-75c6-4014-911c-a7791742f8ed)
 
 ```sql
--- Paste your SQL code below for Question 9
+INSERT INTO Books(ISBN,Title,Author,Publisher,Year) 
+values
+    ('978-1234567890', 'Data Science Essentials', 'Jane Doe', 'TechBooks', 2024);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/cfe0e1a4-9369-4b12-8e90-e2adf720678d)
 
 **Question 10**
 ---
--- Paste Question 10 here
+![image](https://github.com/user-attachments/assets/84af64fc-ada2-470f-8f6b-4ecc56f350fb)
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE contacts(
+    contact_id INTEGER PRIMARY KEY,
+    first_name text not null,
+    last_name text not null,
+    email text, 
+    phone text not null check(length(phone) >=10)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Screenshot](https://github.com/user-attachments/assets/70b2ef43-652f-4d0f-846f-f49fc7b7992e)
 
 
 ## RESULT
